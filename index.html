@@ -8,70 +8,70 @@
     <script src="https://unpkg.com/aframe-extras.ocean@%5E3.5.x/dist/aframe-extras.ocean.min.js"></script>
     <script>
 
-        var neverBeenClicked=true;
-    
-        const argFunc = function(){
-          if(neverBeenClicked === true){
-            neverBeenClicked = false;
-            alert('One alert')
-          }
-        }
-    
-        function aoskDeviceMotion() {
-          document.querySelector('#overlay').addEventListener(
-            'click', _askDeviceMotion, false);
-          }
-    
-        function _askDeviceMotion() {
-          document.querySelector('#contentLayer').style.display='block';
-          askDeviceMotion(argFunc)
-        }
-    
-    function askDeviceMotion(funcArg) {
-      try {
-          if (
-            DeviceMotionEvent &&
-            typeof DeviceMotionEvent.requestPermission === 'function'
-          ){
-            DeviceMotionEvent.requestPermission().then(
-              response => {
-                if (response === 'granted') {
-                  grantedDeviceMotion(funcArg)
-                }else{
-                  console.log('Device Motion permission not granted.')
-                }
-              })
-              .catch(console.error)
-          } else {
-            grantedDeviceMotion(funcArg)
-          }
-        } catch (oops) {
-          console.log('Your device and application combination do not support device motion events.')
+      var neverBeenClicked=true;
+  
+      const argFunc = function(){
+        if(neverBeenClicked === true){
+          neverBeenClicked = false;
+          alert('センサー使用設定完了しました')
         }
       }
-    
-    function grantedDeviceMotion(funcArg) {
-      window.addEventListener(
-        'devicemotion',
-        funcArg,
-        false
-      );
-    }
-    
-    
-        </script>
-        <style>
-        #overlay{
-          z-index: 1000;
-          width:100vw;
-          height: 100vh;
-          background-color: rbga(234,2,2,0.7);
+  
+      function aoskDeviceMotion() {
+        document.querySelector('#overlay').addEventListener(
+          'click', _askDeviceMotion, false);
         }
-        #contentLayer{
-          z-index: 100;
-          display:none;
+  
+      function _askDeviceMotion() {
+        document.querySelector('#contentLayer').style.display='block';
+        askDeviceMotion(argFunc)
+      }
+  
+      function askDeviceMotion(funcArg) {
+        try {
+            if (
+              DeviceMotionEvent &&
+              typeof DeviceMotionEvent.requestPermission === 'function'
+            ){
+              DeviceMotionEvent.requestPermission().then(
+                response => {
+                  if (response === 'granted') {
+                    grantedDeviceMotion(funcArg)
+                  }else{
+                    console.log('Device Motion permission not granted.')
+                  }
+                })
+                .catch(console.error)
+            } else {
+              grantedDeviceMotion(funcArg)
+            }
+          } catch (oops) {
+            console.log('Your device and application combination do not support device motion events.')
+          }
         }
-        </style>
+      
+      function grantedDeviceMotion(funcArg) {
+        window.addEventListener(
+          'devicemotion',
+          funcArg,
+          false
+        );
+      }
+      
+      
+    </script>
+    <style>
+      #overlay{
+        z-index: 1000;
+        width:100vw;
+        height: 100vh;
+        background-color: rbga(234,2,2,0.7);
+      }
+      #contentLayer{
+        z-index: 100;
+        display:none;
+      }
+    </style>
     <style type="text/css">
       body{cursor: none !important;}
     </style>
@@ -198,7 +198,7 @@
         }
       </script>
       <div id="overlay" style="z-index:999;font-size:36px;padding:24px;">
-        <a href='#' onclick="_askDeviceMotion()">タッチしてください</a><br/>
+        <a href='#' onclick="_askDeviceMotion()">タッチしてください</a>
       </div>
       <div id="contentLayer">
         <!-- Aframe -->
