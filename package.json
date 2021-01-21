@@ -12,7 +12,7 @@
     "browser-sync": "^2.26.7",
     "express": "^4.17.1",
     "http": "*",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.4.0"
   },
   "devDependencies": {},
   "description": ""
